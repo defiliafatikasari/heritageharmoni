@@ -1,16 +1,18 @@
-# heritage_apps
+# HeritageHarmoni
 
-A new Flutter project.
+HeritageHarmoni merupakan sebuah aplikasi mobile yang dirancang khusus untuk menjembatani kesenjangan dalam pelestarian budaya lokal di Indonesia. Aplikasi ini bertujuan untuk mengatasi tantangan yang dihadapi dalam melestarikan warisan budaya yang kaya dan beragam, sekaligus memastikan bahwa pengetahuan budaya tersebut tetap relevan dan dapat diakses oleh masyarakat luas.
 
-## Getting Started
+## Konsep Utama dari HeritageHarmoni
 
-This project is a starting point for a Flutter application.
+Konsep utama dari HeritageHarmoni adalah untuk memberikan akses yang mudah dan luas terhadap berbagai informasi budaya, serta menyediakan alat yang mendukung dokumentasi dan promosi budaya secara efektif Dalam era digital yang serba cepat ini, penting untuk memiliki media yang tidak hanya menyimpan informasi tetapi juga mengedukasi masyarakat mengenai nilai-nilai budaya yang ada. Oleh karena itu HeritageHarmoni akan berfungsi sebagai pusat informasi yang komprehensif yang memungkinkan pengguna untuk mengeksplorasi dan memahami budaya lokal dari berbagai sudut pandang. 
 
-A few resources to get you started if this is your first Flutter project:
+## Tampilan Utama HeritageHarmoni
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+SplashScreen:
+![SplashScreen](assets/pageapps/Splash%20Screen.png)
+Welcomepage:
+![Welcomepage](assets/pageapps/Welcome%20Page.png)
+Homepage:
+![Homepage](assets/pageapps/Beranda.png)
+Culturepage:
+![Culturepage](assets/pageapps/Budaya.png)
