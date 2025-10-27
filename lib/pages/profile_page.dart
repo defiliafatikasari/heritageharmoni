@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'login_page.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -12,12 +13,12 @@ class ProfilePage extends StatelessWidget {
         backgroundColor: const Color(0xFFCBAD86),
         centerTitle: true,
         elevation: 0,
+        automaticallyImplyLeading: false,
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
 
-            // =============== HEADER PROFIL =================
             const SizedBox(height: 30),
             CircleAvatar(
               radius: 50,
@@ -35,26 +36,23 @@ class ProfilePage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
 
-            // ============ MENU PROFIL =============
             _buildSectionTitle("Profil Pengguna"),
-            _buildMenuItem(Icons.person, "Edit Profil"),
-            _buildMenuItem(Icons.lock, "Ubah Password"),
-            _buildMenuItem(Icons.logout, "Logout", isLogout: true),
+            _buildMenuItem(context, Icons.person, "Edit Profil"),
+            _buildMenuItem(context, Icons.lock, "Ubah Password"),
+            _buildMenuItem(context, Icons.logout, "Logout", isLogout: true),
 
             const SizedBox(height: 20),
 
-            // ============= LAYANAN =============
             _buildSectionTitle("Layanan"),
-            _buildMenuItem(Icons.support_agent, "Hubungi Dukungan"),
-            _buildMenuItem(Icons.emoji_events, "Penghargaan"),
-            _buildMenuItem(Icons.camera_alt, "Media Sosial"),
+            _buildMenuItem(context, Icons.support_agent, "Hubungi Dukungan"),
+            _buildMenuItem(context, Icons.emoji_events, "Penghargaan"),
+            _buildMenuItem(context, Icons.camera_alt, "Media Sosial"),
 
             const SizedBox(height: 20),
 
-            // ============= BAGIKAN & BOOKMARK =============
             _buildSectionTitle("Bagikan & Bookmark"),
-            _buildMenuItem(Icons.share, "Bagikan Konten"),
-            _buildMenuItem(Icons.bookmark, "Bookmark"),
+            _buildMenuItem(context, Icons.share, "Bagikan Konten"),
+            _buildMenuItem(context, Icons.bookmark, "Bookmark"),
 
             const SizedBox(height: 30),
           ],
@@ -63,7 +61,7 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  // ===== TITLE SECTION =====
+  // ========== SECTION TITLE ==========
   Widget _buildSectionTitle(String title) {
     return Container(
       width: double.infinity,
@@ -75,10 +73,14 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  // ===== MENU ITEM =====
-  Widget _buildMenuItem(IconData icon, String label, {bool isLogout = false}) {
+  // ========== MENU ITEM ==========
+  Widget _buildMenuItem(BuildContext context, IconData icon, String label, {bool isLogout = false}) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        if (isLogout) {
+          _showLogoutDialog(context);
+        }
+      },
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
         decoration: const BoxDecoration(
@@ -104,6 +106,39 @@ class ProfilePage extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  // ========== LOGOUT DIALOG ==========
+  void _showLogoutDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text("Konfirmasi Logout"),
+          content: const Text("Apakah Anda yakin ingin keluar dari akun?"),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context); 
+              },
+              child: const Text("Batal"),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (_) => const LoginPage()),
+                );
+              },
+              child: const Text(
+                "OK",
+                style: TextStyle(color: Colors.red),
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }

@@ -16,6 +16,7 @@ class CulturePage extends StatelessWidget {
         centerTitle: true,
         backgroundColor: const Color(0xFFCBAD86),
         elevation: 0,
+        automaticallyImplyLeading: false,
       ),
       body: ListView(
         padding: const EdgeInsets.all(16),

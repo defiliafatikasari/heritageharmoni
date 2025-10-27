@@ -11,6 +11,7 @@ class EducationPage extends StatelessWidget {
         title: const Text("Edukasi Budaya"),
         backgroundColor: const Color(0xFFCBAD86),
         centerTitle: true,
+        automaticallyImplyLeading: false,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
