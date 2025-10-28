@@ -14,7 +14,7 @@ Aplikasi ini berfungsi sebagai **pusat informasi budaya komprehensif**, yang mem
 
 ---
 
-## 📱 Tampilan Halaman-Halaman HeritageHarmoni
+## 📱 Tampilan UI Design Halaman-Halaman HeritageHarmoni
 
 ### 🔹 Splash & Welcome
 <p align="center">
@@ -43,6 +43,17 @@ Aplikasi ini berfungsi sebagai **pusat informasi budaya komprehensif**, yang mem
   <img src="assets/pageapps/Jelajahi.png" alt="ExplorePage" width="150"/>
   <img src="assets/pageapps/Edukasi.png" alt="EducationPage" width="150"/>
   <img src="assets/pageapps/Profil.png" alt="ProfilePage" width="150"/>
+</p>
+
+---
+
+### 🔹 Empat Menu di Halaman Budaya
+
+<p align="center">
+  <img src="assets/pageapps/Musik Tradisional.png" alt="MusikTradisioanl" width="150"/>
+  <img src="assets/pageapps/Kuliner Daerah.png" alt="KulinerDaerah" width="150"/>
+  <img src="assets/pageapps/Pakaian Adat.png" alt="PakaianAdat" width="150"/>
+  <img src="assets/pageapps/Festival dan Tari.png" alt="FestivalDanTari" width="150"/>
 </p>
 
 ---
