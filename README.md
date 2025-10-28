@@ -58,6 +58,14 @@ Aplikasi ini berfungsi sebagai **pusat informasi budaya komprehensif**, yang mem
 
 ---
 
+### 🔹 Logout
+
+<p align="center">
+  <img src="assets/pageapps/Logout.png" alt="Logout" width="150"/>
+</p>
+
+---
+
 ## 📘 Penjelasan Aplikasi (PDF)
 
 📄 [Klik di sini untuk mengunduh Penjelasan Aplikasi HeritageHarmoni (PDF)](assets/pdf/penjelasan_aplikasi_heritageharmony.pdf)
