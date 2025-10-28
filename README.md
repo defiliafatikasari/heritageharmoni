@@ -18,8 +18,8 @@ Aplikasi ini berfungsi sebagai **pusat informasi budaya komprehensif**, yang mem
 
 ### 🔹 Splash & Welcome
 <p align="center">
-  <img src="assets/pageapps/Splash Screen.png" alt="SplashScreen" width="200"/>
-  <img src="assets/pageapps/Welcome Page.png" alt="WelcomePage" width="200"/>
+  <img src="assets/pageapps/Splash Screen.png" alt="SplashScreen" width="180"/>
+  <img src="assets/pageapps/Welcome Page.png" alt="WelcomePage" width="180"/>
 </p>
 
 ---
@@ -38,11 +38,11 @@ Aplikasi ini berfungsi sebagai **pusat informasi budaya komprehensif**, yang mem
 ### 🔹 Halaman Utama
 
 <p align="center">
-  <img src="assets/pageapps/Beranda.png" alt="Homepage" width="100"/>
-  <img src="assets/pageapps/Budaya.png" alt="CulturePage" width="100"/>
-  <img src="assets/pageapps/Jelajahi.png" alt="ExplorePage" width="100"/>
-  <img src="assets/pageapps/Edukasi.png" alt="EducationPage" width="100"/>
-  <img src="assets/pageapps/Profil.png" alt="ProfilePage" width="100"/>
+  <img src="assets/pageapps/Beranda.png" alt="Homepage" width="150"/>
+  <img src="assets/pageapps/Budaya.png" alt="CulturePage" width="150"/>
+  <img src="assets/pageapps/Jelajahi.png" alt="ExplorePage" width="150"/>
+  <img src="assets/pageapps/Edukasi.png" alt="EducationPage" width="150"/>
+  <img src="assets/pageapps/Profil.png" alt="ProfilePage" width="150"/>
 </p>
 
 ---
