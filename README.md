@@ -26,14 +26,11 @@ Aplikasi ini berfungsi sebagai **pusat informasi budaya komprehensif**, yang mem
 
 ### 🔹 Autentikasi (Login, Register, Forgot Password)
 <p align="center">
-  <img src="assets/pageapps/Login Page.png" alt="LoginPage" width="180"/>
-  <img src="assets/pageapps/Register Page.png" alt="RegisterPage" width="180"/>
-  <img src="assets/pageapps/Forgot Password Page.png" alt="ForgotPasswordPage" width="180"/>
-</p>
-
-<p align="center">
-  <img src="assets/pageapps/Email Sent Page.png" alt="EmailSentPage" width="180"/>
-  <img src="assets/pageapps/Reset Password Page.png" alt="ResetPasswordPage" width="180"/>
+  <img src="assets/pageapps/Login Page.png" alt="LoginPage" width="150"/>
+  <img src="assets/pageapps/Register Page.png" alt="RegisterPage" width="150"/>
+  <img src="assets/pageapps/Forgot Password Page.png" alt="ForgotPasswordPage" width="150"/>
+  <img src="assets/pageapps/Email Sent Page.png" alt="EmailSentPage" width="150"/>
+  <img src="assets/pageapps/Reset Password Page.png" alt="ResetPasswordPage" width="150"/>
 </p>
 
 ---
@@ -41,11 +38,11 @@ Aplikasi ini berfungsi sebagai **pusat informasi budaya komprehensif**, yang mem
 ### 🔹 Halaman Utama
 
 <p align="center">
-  <img src="assets/pageapps/Beranda.png" alt="Homepage" width="180"/>
-  <img src="assets/pageapps/Budaya.png" alt="CulturePage" width="180"/>
-  <img src="assets/pageapps/Jelajahi.png" alt="ExplorePage" width="180"/>
-  <img src="assets/pageapps/Edukasi.png" alt="EducationPage" width="180"/>
-  <img src="assets/pageapps/Profil.png" alt="ProfilePage" width="180"/>
+  <img src="assets/pageapps/Beranda.png" alt="Homepage" width="100"/>
+  <img src="assets/pageapps/Budaya.png" alt="CulturePage" width="100"/>
+  <img src="assets/pageapps/Jelajahi.png" alt="ExplorePage" width="100"/>
+  <img src="assets/pageapps/Edukasi.png" alt="EducationPage" width="100"/>
+  <img src="assets/pageapps/Profil.png" alt="ProfilePage" width="100"/>
 </p>
 
 ---
