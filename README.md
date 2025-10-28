@@ -18,22 +18,22 @@ Aplikasi ini berfungsi sebagai **pusat informasi budaya komprehensif**, yang mem
 
 ### 🔹 Splash & Welcome
 <p align="center">
-  <img src="assets/pageapps/Splash Screen.png" alt="SplashScreen" width="220"/>
-  <img src="assets/pageapps/Welcome Page.png" alt="WelcomePage" width="220"/>
+  <img src="assets/pageapps/Splash Screen.png" alt="SplashScreen" width="200"/>
+  <img src="assets/pageapps/Welcome Page.png" alt="WelcomePage" width="200"/>
 </p>
 
 ---
 
 ### 🔹 Autentikasi (Login, Register, Forgot Password)
 <p align="center">
-  <img src="assets/pageapps/Login Page.png" alt="LoginPage" width="220"/>
-  <img src="assets/pageapps/Register Page.png" alt="RegisterPage" width="220"/>
-  <img src="assets/pageapps/Forgot Password Page.png" alt="ForgotPasswordPage" width="220"/>
+  <img src="assets/pageapps/Login Page.png" alt="LoginPage" width="180"/>
+  <img src="assets/pageapps/Register Page.png" alt="RegisterPage" width="180"/>
+  <img src="assets/pageapps/Forgot Password Page.png" alt="ForgotPasswordPage" width="180"/>
 </p>
 
 <p align="center">
-  <img src="assets/pageapps/Email Sent Page.png" alt="EmailSentPage" width="220"/>
-  <img src="assets/pageapps/Reset Password Page.png" alt="ResetPasswordPage" width="220"/>
+  <img src="assets/pageapps/Email Sent Page.png" alt="EmailSentPage" width="180"/>
+  <img src="assets/pageapps/Reset Password Page.png" alt="ResetPasswordPage" width="180"/>
 </p>
 
 ---
@@ -41,11 +41,11 @@ Aplikasi ini berfungsi sebagai **pusat informasi budaya komprehensif**, yang mem
 ### 🔹 Halaman Utama
 
 <p align="center">
-  <img src="assets/pageapps/Beranda.png" alt="Homepage" width="200"/>
-  <img src="assets/pageapps/Budaya.png" alt="CulturePage" width="200"/>
-  <img src="assets/pageapps/Jelajahi.png" alt="ExplorePage" width="200"/>
-  <img src="assets/pageapps/Edukasi.png" alt="EducationPage" width="200"/>
-  <img src="assets/pageapps/Profil.png" alt="ProfilePage" width="200"/>
+  <img src="assets/pageapps/Beranda.png" alt="Homepage" width="180"/>
+  <img src="assets/pageapps/Budaya.png" alt="CulturePage" width="180"/>
+  <img src="assets/pageapps/Jelajahi.png" alt="ExplorePage" width="180"/>
+  <img src="assets/pageapps/Edukasi.png" alt="EducationPage" width="180"/>
+  <img src="assets/pageapps/Profil.png" alt="ProfilePage" width="180"/>
 </p>
 
 ---
