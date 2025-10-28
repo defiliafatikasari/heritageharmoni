@@ -8,18 +8,24 @@ class FestivalPage extends StatelessWidget {
     final List<Map<String, String>> festivals = [
       {
         "nama": "Bali Arts Festival",
-        "desc": "Festival seni tahunan di Bali yang menampilkan tari, musik, dan kerajinan tradisional.",
-        "img": "assets/images/heritage.png"
+        "desc":
+            "Festival seni tahunan di Bali yang menampilkan tari, musik, dan kerajinan tradisional.",
+        "img":
+            "https://cdn.antaranews.com/cache/1200x800/2016/06/20160613123.jpg"
       },
       {
         "nama": "Sekaten Yogyakarta",
-        "desc": "Perayaan tradisional di Yogyakarta untuk memperingati Maulid Nabi Muhammad SAW.",
-        "img": "assets/images/heritage.png"
+        "desc":
+            "Perayaan tradisional di Yogyakarta untuk memperingati Maulid Nabi Muhammad SAW.",
+        "img":
+            "https://upload.wikimedia.org/wikipedia/commons/c/c9/Gunungan_darat_during_Garebeg_Mulud_Yogyakarta_Dec_2017_Pj_IMG_4517sm.jpg"
       },
       {
         "nama": "Tabuik Pariaman",
-        "desc": "Tradisi di Sumatera Barat untuk memperingati hari Asyura dalam budaya Minangkabau.",
-        "img": "assets/images/heritage.png"
+        "desc":
+            "Tradisi di Sumatera Barat untuk memperingati hari Asyura dalam budaya Minangkabau.",
+        "img":
+            "https://upload.wikimedia.org/wikipedia/commons/8/89/Tabuik_festival.jpg"
       },
     ];
 
@@ -30,15 +36,33 @@ class FestivalPage extends StatelessWidget {
         itemCount: festivals.length,
         itemBuilder: (context, index) {
           return Card(
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
             elevation: 4,
             margin: const EdgeInsets.symmetric(vertical: 8),
             child: ListTile(
               leading: ClipRRect(
                 borderRadius: BorderRadius.circular(8),
-                child: Image.asset(festivals[index]["img"]!, width: 60, fit: BoxFit.cover),
+                child: Image.network(
+                  festivals[index]["img"]!,
+                  width: 60,
+                  height: 60,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Container(
+                      width: 60,
+                      height: 60,
+                      color: Colors.grey[300],
+                      child:
+                          const Icon(Icons.broken_image, color: Colors.grey),
+                    );
+                  },
+                ),
               ),
-              title: Text(festivals[index]["nama"]!),
+              title: Text(
+                festivals[index]["nama"]!,
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
               subtitle: Text(festivals[index]["desc"]!),
             ),
           );

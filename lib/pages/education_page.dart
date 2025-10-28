@@ -46,17 +46,20 @@ class EducationPage extends StatelessWidget {
               _buildEduCard(
                 title: "Sejarah Batik Nusantara",
                 type: "Artikel & Infografis",
-                image: "assets/images/heritage.png",
+                image:
+                    "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Collectie_NMvWereldculturen%2C_RV-847-81%2C_Batikpatroon%2C_%27Parang_sawut%27%2C_voor_1891.jpg/1200px-Collectie_NMvWereldculturen%2C_RV-847-81%2C_Batikpatroon%2C_%27Parang_sawut%27%2C_voor_1891.jpg",
               ),
               _buildEduCard(
                 title: "Video Pembuatan Wayang Kulit",
                 type: "Video Pembelajaran",
-                image: "assets/images/heritage.png",
+                image:
+                    "https://upload.wikimedia.org/wikipedia/commons/5/51/Gathotkaca-paraga.png",
               ),
               _buildEduCard(
                 title: "E-book Tarian Tradisional",
                 type: "E-book Budaya",
-                image: "assets/images/heritage.png",
+                image:
+                    "https://upload.wikimedia.org/wikipedia/commons/8/82/Tari_topeng_cirebon.jpg",
               ),
 
               const SizedBox(height: 28),
@@ -71,12 +74,14 @@ class EducationPage extends StatelessWidget {
               _buildEduCard(
                 title: "Kelas Melukis Motif Batik",
                 type: "Workshop Offline",
-                image: "assets/images/heritage.png",
+                image:
+                    "https://upload.wikimedia.org/wikipedia/commons/a/ab/Kemeja_batik_tulis_lukis.jpg",
               ),
               _buildEduCard(
                 title: "Kursus Musik Tradisional Online",
                 type: "Course Online",
-                image: "assets/images/heritage.png",
+                image:
+                    "https://upload.wikimedia.org/wikipedia/commons/7/7e/Traditional_indonesian_instruments04.jpg",
               ),
             ],
           ),
@@ -108,12 +113,16 @@ class EducationPage extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(14), bottomLeft: Radius.circular(14)),
-            child: Image.asset(
+              topLeft: Radius.circular(14),
+              bottomLeft: Radius.circular(14),
+            ),
+            child: Image.network(
               image,
               width: 110,
               height: 90,
               fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) =>
+                  const Icon(Icons.broken_image, size: 60),
             ),
           ),
           Expanded(
@@ -124,12 +133,12 @@ class EducationPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(title,
-                      style:
-                          const TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+                      style: const TextStyle(
+                          fontSize: 15, fontWeight: FontWeight.bold)),
                   const SizedBox(height: 4),
                   Text(type,
-                      style:
-                          const TextStyle(fontSize: 12, color: Colors.black54)),
+                      style: const TextStyle(
+                          fontSize: 12, color: Colors.black54)),
                 ],
               ),
             ),

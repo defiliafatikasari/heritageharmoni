@@ -47,13 +47,15 @@ class ExplorePage extends StatelessWidget {
                 title: "Pameran Tenun Nusantara",
                 location: "Museum Budaya Jakarta",
                 date: "12 Jan - 28 Feb 2025",
-                image: "assets/images/heritage.png",
+                image:
+                    "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Exhibition_-_Fashion_Wear_using_woven_fabric_from_NTT_by_Norci_Nomleni.jpg/250px-Exhibition_-_Fashion_Wear_using_woven_fabric_from_NTT_by_Norci_Nomleni.jpg",
               ),
               _buildCultureCard(
                 title: "Pameran Patung Kayu Tradisional",
                 location: "Galeri Seni Bali",
                 date: "5 Feb - 3 Mar 2025",
-                image: "assets/images/heritage.png",
+                image:
+                    "https://upload.wikimedia.org/wikipedia/commons/b/bd/Ana_deo_figures_Louvre_70-999-5-1-2.jpg",
               ),
 
               const SizedBox(height: 25),
@@ -69,13 +71,15 @@ class ExplorePage extends StatelessWidget {
                 title: "Festival Musik Tradisional",
                 location: "Lapangan Kota Yogyakarta",
                 date: "20 Feb 2025",
-                image: "assets/images/heritage.png",
+                image:
+                    "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Talempong_pacik2.jpg/500px-Talempong_pacik2.jpg",
               ),
               _buildCultureCard(
                 title: "Parade Budaya Sunda",
                 location: "Bandung",
                 date: "3 Mar 2025",
-                image: "assets/images/heritage.png",
+                image:
+                    "https://upload.wikimedia.org/wikipedia/commons/a/a2/Tradisi_Parebut_Seeng_Bogor.jpg",
               ),
             ],
           ),
@@ -109,11 +113,13 @@ class ExplorePage extends StatelessWidget {
           ClipRRect(
             borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(14), bottomLeft: Radius.circular(14)),
-            child: Image.asset(
-              image,
+            child: Image.network(
+              image, // pakai network bukan asset
               width: 110,
               height: 90,
               fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) =>
+                  const Icon(Icons.broken_image, size: 60),
             ),
           ),
           Expanded(
@@ -124,14 +130,14 @@ class ExplorePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(title,
-                      style:
-                          const TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+                      style: const TextStyle(
+                          fontSize: 15, fontWeight: FontWeight.bold)),
                   const SizedBox(height: 4),
                   Text(location, style: const TextStyle(fontSize: 13)),
                   const SizedBox(height: 4),
                   Text(date,
-                      style:
-                          const TextStyle(fontSize: 12, color: Colors.black54)),
+                      style: const TextStyle(
+                          fontSize: 12, color: Colors.black54)),
                 ],
               ),
             ),

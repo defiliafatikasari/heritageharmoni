@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'login_page.dart';
 
 class RegisterPage extends StatelessWidget {
@@ -42,16 +43,20 @@ class RegisterPage extends StatelessWidget {
 
                 const SizedBox(height: 20),
 
-                TextField(decoration: InputDecoration(labelText: "Username")),
+                const TextField(
+                  decoration: InputDecoration(labelText: "Username"),
+                ),
                 const SizedBox(height: 10),
-                TextField(decoration: InputDecoration(labelText: "Email")),
+                const TextField(
+                  decoration: InputDecoration(labelText: "Email"),
+                ),
                 const SizedBox(height: 10),
-                TextField(
+                const TextField(
                   obscureText: true,
                   decoration: InputDecoration(labelText: "Password"),
                 ),
                 const SizedBox(height: 10),
-                TextField(
+                const TextField(
                   obscureText: true,
                   decoration: InputDecoration(labelText: "Ulangi Password"),
                 ),
@@ -65,11 +70,10 @@ class RegisterPage extends StatelessWidget {
 
                 const SizedBox(height: 15),
 
-                // Tombol Daftar (PUTIH)
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.orange,
-                    foregroundColor: Colors.white, // teks putih
+                    foregroundColor: Colors.white,
                     minimumSize: const Size(double.infinity, 50),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
@@ -78,21 +82,26 @@ class RegisterPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  child: const Text("Daftar", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                  child: const Text(
+                    "Daftar",
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
                 ),
                 const SizedBox(height: 20),
 
-                // Register dengan Google & Facebook
+                // Tombol Register dengan Google & Facebook
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    // Google Icon
                     IconButton(
-                      icon: Image.asset("assets/images/heritage.png", height: 32),
+                      icon: const FaIcon(FontAwesomeIcons.google, color: Colors.red, size: 32),
                       onPressed: () {},
                     ),
                     const SizedBox(width: 20),
+                    // Facebook Icon
                     IconButton(
-                      icon: Image.asset("assets/images/heritage.png", height: 32),
+                      icon: const FaIcon(FontAwesomeIcons.facebook, color: Colors.blue, size: 32),
                       onPressed: () {},
                     ),
                   ],

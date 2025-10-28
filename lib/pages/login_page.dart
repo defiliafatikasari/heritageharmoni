@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'home_page.dart'; 
-import 'register_page.dart'; 
-import 'forgot_password_page.dart'; 
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'home_page.dart';
+import 'register_page.dart';
+import 'forgot_password_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -43,8 +44,8 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 35),
 
               // Email Field
-              TextField(
-                decoration: const InputDecoration(
+              const TextField(
+                decoration: InputDecoration(
                   labelText: "Email",
                   hintText: "Masukkan Email",
                   border: UnderlineInputBorder(),
@@ -54,9 +55,9 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 20),
 
               // Password Field
-              TextField(
+              const TextField(
                 obscureText: true,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   labelText: "Password",
                   hintText: "Masukkan Password",
                   border: UnderlineInputBorder(),
@@ -82,10 +83,17 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(context,
-                        MaterialPageRoute(builder: (_) => const ForgotPasswordPage()));
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const ForgotPasswordPage(),
+                        ),
+                      );
                     },
-                    child: const Text("Lupa Password?", style: TextStyle(color: Colors.orange)),
+                    child: const Text(
+                      "Lupa Password?",
+                      style: TextStyle(color: Colors.orange),
+                    ),
                   ),
                 ],
               ),
@@ -131,12 +139,12 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 20),
 
               // Google Button
-              _socialButton("Google", "assets/images/heritage.png"),
+              _socialButton("Google", FontAwesomeIcons.google, Colors.red),
 
               const SizedBox(height: 12),
 
               // Facebook Button
-              _socialButton("Facebook", "assets/images/heritage.png"),
+              _socialButton("Facebook", FontAwesomeIcons.facebook, Colors.blue),
 
               const SizedBox(height: 30),
 
@@ -153,11 +161,16 @@ class _LoginPageState extends State<LoginPage> {
                         MaterialPageRoute(builder: (_) => const RegisterPage()),
                       );
                     },
-                    child: const Text("Daftar Sini", style: TextStyle(color: Colors.orange, fontWeight: FontWeight.bold)),
+                    child: const Text(
+                      "Daftar Sini",
+                      style: TextStyle(
+                        color: Colors.orange,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   )
                 ],
               ),
-
             ],
           ),
         ),
@@ -165,7 +178,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Widget _socialButton(String name, String iconPath) {
+  Widget _socialButton(String name, IconData icon, Color iconColor) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.symmetric(vertical: 12),
@@ -176,7 +189,7 @@ class _LoginPageState extends State<LoginPage> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset(iconPath, height: 22),
+          Icon(icon, color: iconColor, size: 22),
           const SizedBox(width: 10),
           Text("Masuk dengan $name"),
         ],
