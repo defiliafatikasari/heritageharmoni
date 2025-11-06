@@ -19,7 +19,7 @@ Aplikasi ini berfungsi sebagai **pusat informasi budaya komprehensif**, yang mem
 ### 🔹 Splash & Welcome
 <p align="center">
   <img src="assets/pageapps/Splash Screen.png" alt="SplashScreen" width="180"/>
-  <img src="assets/pageapps/Welcome Page.png" alt="WelcomePage" width="180"/>
+  <img src="assets/pageapps/WelcomePage.png" alt="WelcomePage" width="180"/>
 </p>
 
 ---
