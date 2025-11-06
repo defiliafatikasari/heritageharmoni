@@ -27,7 +27,7 @@ class CulturePage extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
               image: const DecorationImage(
-                image: AssetImage('assets/images/heritage.png'),
+                image: AssetImage('assets/benner/Benner2.png'),
                 fit: BoxFit.cover,
               ),
             ),

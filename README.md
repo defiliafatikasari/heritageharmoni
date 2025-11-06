@@ -38,8 +38,8 @@ Aplikasi ini berfungsi sebagai **pusat informasi budaya komprehensif**, yang mem
 ### 🔹 Halaman Utama
 
 <p align="center">
-  <img src="assets/pageapps/Beranda.png" alt="Homepage" width="150"/>
-  <img src="assets/pageapps/Budaya.png" alt="CulturePage" width="150"/>
+  <img src="assets/pageapps/BerandaPage.png" alt="Homepage" width="150"/>
+  <img src="assets/pageapps/BudayaPage.png" alt="CulturePage" width="150"/>
   <img src="assets/pageapps/Jelajahi.png" alt="ExplorePage" width="150"/>
   <img src="assets/pageapps/Edukasi.png" alt="EducationPage" width="150"/>
   <img src="assets/pageapps/Profil.png" alt="ProfilePage" width="150"/>

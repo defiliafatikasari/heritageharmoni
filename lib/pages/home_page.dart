@@ -83,34 +83,25 @@ class _BerandaPageState extends State<BerandaPage> {
   String selectedCity = "Semua";
 
   final List<Map<String, String>> banners = [
-    {
-      'image': 'assets/images/heritage.png',
-      'title': 'Selamat Datang di Heritage Harmoni',
-    },
-    {
-      'image': 'assets/images/heritage.png',
-      'title': 'Lestarikan Warisan Budaya Nusantara',
-    },
-    {
-      'image': 'assets/images/heritage.png',
-      'title': 'Eksplorasi Kearifan Lokal di Sekitarmu',
-    },
+    {'image': 'assets/benner/Benner1.png'},
+    {'image': 'assets/benner/Benner2.png'},
+    {'image': 'assets/benner/Benner3.png'},
   ];
 
   final List<String> cities = ['Semua', 'Pamekasan', 'Sumenep', 'Bangkalan', 'Sampang'];
 
   final Map<String, List<Map<String, String>>> newsByCategory = {
     'Budaya': [
-      {'title': 'Festival Batik Nusantara', 'image': 'assets/images/heritage.png'},
-      {'title': 'Upacara Adat Madura', 'image': 'assets/images/heritage.png'},
+      {'title': 'Festival Batik Nusantara', 'image': 'https://cdn.antaranews.com/cache/1200x800/2018/10/karnival.jpg'},
+      {'title': 'Upacara Adat Madura', 'image': 'https://asset.kompas.com/crops/hK5puGOvaI3mpFJZGo9m_h7W2sM=/0x0:589x393/1200x800/data/photo/2022/03/06/62242da869e3c.jpeg'},
     ],
     'Seni': [
-      {'title': 'Pameran Seni Lukis Tradisional', 'image': 'assets/images/heritage.png'},
-      {'title': 'Pagelaran Tari Madura', 'image': 'assets/images/heritage.png'},
+      {'title': 'Pameran Seni Lukis Tradisional', 'image': 'https://img.antarafoto.com/cache/1200x765/2014/08/31/pameran-lukisan-tradisional-bali-98tq-dom.jpg'},
+      {'title': 'Pagelaran Tari Madura', 'image': 'https://img.antarafoto.com/cache/1200x737/2009/08/09/tari-1j88-dom.jpg'},
     ],
     'Tradisi': [
-      {'title': 'Pelatihan Anyaman Bambu', 'image': 'assets/images/heritage.png'},
-      {'title': 'Festival Karapan Sapi', 'image': 'assets/images/heritage.png'},
+      {'title': 'Pelatihan Anyaman Bambu', 'image': 'https://img.antarafoto.com/cache/1200x800/2021/08/22/pelatihan-kerajinan-anyaman-bambu-vdca-dom.jpg'},
+      {'title': 'Festival Karapan Sapi', 'image': 'https://cdn.antaranews.com/cache/1200x800/2017/10/20171015Seleksi-Tingkat-Kabupaten-151017-sb-4.jpg'},
     ],
   };
 
@@ -122,7 +113,7 @@ class _BerandaPageState extends State<BerandaPage> {
         _currentPage = (_currentPage + 1) % banners.length;
         _pageController.animateToPage(
           _currentPage,
-          duration: const Duration(milliseconds: 400),
+          duration: const Duration(milliseconds: 500),
           curve: Curves.easeInOut,
         );
       }
@@ -175,13 +166,13 @@ class _BerandaPageState extends State<BerandaPage> {
                   )
                 ],
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 14),
 
               // ================= Kolom Pencarian =================
               TextField(
                 decoration: InputDecoration(
                   prefixIcon: const Icon(Icons.search),
-                  hintText: 'Cari berita budaya...',
+                  hintText: 'Cari berita dan informasi budaya...',
                   filled: true,
                   fillColor: const Color(0xFFF3EDE4),
                   contentPadding: const EdgeInsets.symmetric(vertical: 0),
@@ -191,39 +182,110 @@ class _BerandaPageState extends State<BerandaPage> {
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
 
               // ================= Banner Auto Slide =================
               SizedBox(
-                height: 160,
+                height: 180,
                 child: Stack(
-                  alignment: Alignment.bottomCenter,
                   children: [
                     PageView.builder(
                       controller: _pageController,
                       itemCount: banners.length,
                       itemBuilder: (context, index) {
                         final banner = banners[index];
-                        return _BannerCard(
-                          image: banner['image']!,
-                          title: banner['title']!,
+                        return ClipRRect(
+                          borderRadius: BorderRadius.circular(18),
+                          child: Image.asset(
+                            banner['image']!,
+                            fit: BoxFit.contain,
+                            width: double.infinity,
+                          ),
                         );
                       },
+                      onPageChanged: (index) {
+                        setState(() {
+                          _currentPage = index;
+                        });
+                      },
                     ),
+
+                    // Panah kiri
+                    Positioned(
+                      left: 0,
+                      top: 0,
+                      bottom: 0,
+                      child: Center(
+                        child: Container(
+                          width: 32, 
+                          height: 32, 
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.black.withOpacity(0.3),
+                          ),
+                          child: IconButton(
+                            padding: EdgeInsets.zero, // Hilangkan padding default
+                            iconSize: 18, // Ukuran ikon
+                            icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
+                            onPressed: () {
+                              int prevPage = (_currentPage - 1 + banners.length) % banners.length;
+                              _pageController.animateToPage(
+                                prevPage,
+                                duration: const Duration(milliseconds: 500),
+                                curve: Curves.easeInOut,
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    // Panah kanan
+                    Positioned(
+                      right: 0,
+                      top: 0,
+                      bottom: 0,
+                      child: Center(
+                        child: Container(
+                          width: 32,
+                          height: 32,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.black.withOpacity(0.3),
+                          ),
+                          child: IconButton(
+                            padding: EdgeInsets.zero,
+                            iconSize: 18,
+                            icon: const Icon(Icons.arrow_forward_ios, color: Colors.white),
+                            onPressed: () {
+                              int nextPage = (_currentPage + 1) % banners.length;
+                              _pageController.animateToPage(
+                                nextPage,
+                                duration: const Duration(milliseconds: 500),
+                                curve: Curves.easeInOut,
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    // Indikator titik
                     Positioned(
                       bottom: 8,
+                      left: 0,
+                      right: 0,
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: List.generate(
                           banners.length,
-                          (index) => Container(
+                          (index) => AnimatedContainer(
+                            duration: const Duration(milliseconds: 300),
                             margin: const EdgeInsets.symmetric(horizontal: 4),
-                            width: _currentPage == index ? 10 : 6,
-                            height: 6,
+                            width: _currentPage == index ? 12 : 8,
+                            height: _currentPage == index ? 12 : 8,
                             decoration: BoxDecoration(
-                              color: _currentPage == index
-                                  ? Colors.white
-                                  : Colors.white70,
-                              borderRadius: BorderRadius.circular(3),
+                              color: _currentPage == index ? Colors.orange : Colors.grey[400],
+                              shape: BoxShape.circle,
                             ),
                           ),
                         ),
@@ -232,9 +294,9 @@ class _BerandaPageState extends State<BerandaPage> {
                   ],
                 ),
               ),
-              const SizedBox(height: 24),
 
               // ================= Kategori =================
+              const SizedBox(height: 16),
               const Text(
                 'Kategori Budaya',
                 style: TextStyle(
@@ -254,9 +316,7 @@ class _BerandaPageState extends State<BerandaPage> {
                         label: Text(
                           cat,
                           style: TextStyle(
-                            color: selectedCategory == cat
-                                ? Colors.white
-                                : Colors.brown,
+                            color: selectedCategory == cat ? Colors.white : Colors.brown,
                           ),
                         ),
                         backgroundColor: selectedCategory == cat
@@ -329,37 +389,6 @@ class _BerandaPageState extends State<BerandaPage> {
 }
 
 // ====================== Widget Tambahan ======================
-class _BannerCard extends StatelessWidget {
-  final String image;
-  final String title;
-  const _BannerCard({required this.image, required this.title});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 6),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        image: DecorationImage(image: AssetImage(image), fit: BoxFit.cover),
-      ),
-      alignment: Alignment.center,
-      child: Container(
-        color: Colors.black45,
-        padding: const EdgeInsets.all(8.0),
-        child: Text(
-          title,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-          ),
-          textAlign: TextAlign.center,
-        ),
-      ),
-    );
-  }
-}
-
 class _NewsCard extends StatelessWidget {
   final String image;
   final String title;
@@ -373,7 +402,7 @@ class _NewsCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withValues(alpha: 0.2),
+            color: Colors.grey.withOpacity(0.2),
             blurRadius: 4,
             offset: const Offset(2, 2),
           )
@@ -385,8 +414,8 @@ class _NewsCard extends StatelessWidget {
           ClipRRect(
             borderRadius:
                 const BorderRadius.vertical(top: Radius.circular(12)),
-            child: Image.asset(
-              image,
+            child: Image.network(
+              image, // pakai network
               height: 90,
               width: double.infinity,
               fit: BoxFit.cover,
