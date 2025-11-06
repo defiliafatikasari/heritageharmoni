@@ -26,11 +26,11 @@ Aplikasi ini berfungsi sebagai **pusat informasi budaya komprehensif**, yang mem
 
 ### 🔹 Autentikasi (Login, Register, Forgot Password)
 <p align="center">
-  <img src="assets/pageapps/Login Page.png" alt="LoginPage" width="150"/>
-  <img src="assets/pageapps/Register Page.png" alt="RegisterPage" width="150"/>
-  <img src="assets/pageapps/Forgot Password Page.png" alt="ForgotPasswordPage" width="150"/>
-  <img src="assets/pageapps/Email Sent Page.png" alt="EmailSentPage" width="150"/>
-  <img src="assets/pageapps/Reset Password Page.png" alt="ResetPasswordPage" width="150"/>
+  <img src="assets/pageapps/LoginPage.png" alt="LoginPage" width="150"/>
+  <img src="assets/pageapps/RegisterPage.png" alt="RegisterPage" width="150"/>
+  <img src="assets/pageapps/ForgotPasswordPage.png" alt="ForgotPasswordPage" width="150"/>
+  <img src="assets/pageapps/EmailSentPage.png" alt="EmailSentPage" width="150"/>
+  <img src="assets/pageapps/ResetPasswordPage.png" alt="ResetPasswordPage" width="150"/>
 </p>
 
 ---

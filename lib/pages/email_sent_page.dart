@@ -21,7 +21,7 @@ class EmailSentPage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset("assets/images/heritage.png", height: 100),
+                Image.asset("assets/images/heritage.png", height: 90),
                 const SizedBox(height: 30),
 
                 const Text(
@@ -36,6 +36,7 @@ class EmailSentPage extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green,
                     foregroundColor: Colors.white,
+                    minimumSize: const Size(double.infinity, 50),
                     padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 30),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                   ),
@@ -45,7 +46,7 @@ class EmailSentPage extends StatelessWidget {
                       MaterialPageRoute(builder: (_) => const ResetPasswordPage()),
                     );
                   },
-                  child: const Text("OK", style: TextStyle(fontSize: 16)),
+                  child: const Text("OK", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                 )
               ],
             ),

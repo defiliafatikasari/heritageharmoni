@@ -25,7 +25,7 @@ class ForgotPasswordPage extends StatelessWidget {
 
                 const Text(
                   "Lupa Password",
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 8),
 
@@ -53,6 +53,7 @@ class ForgotPasswordPage extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.orange,
                       foregroundColor: Colors.white,
+                      minimumSize: const Size(double.infinity, 50),
                       padding: const EdgeInsets.symmetric(vertical: 14),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
@@ -64,7 +65,7 @@ class ForgotPasswordPage extends StatelessWidget {
                         MaterialPageRoute(builder: (_) => const EmailSentPage()),
                       );
                     },
-                    child: const Text("Dapatkan Link", style: TextStyle(fontSize: 16)),
+                    child: const Text("Dapatkan Link", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                   ),
                 ),
               ],

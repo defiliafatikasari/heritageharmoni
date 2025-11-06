@@ -25,7 +25,7 @@ class ResetPasswordPage extends StatelessWidget {
 
                 const Text(
                   "Reset Password",
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 10),
 
@@ -59,6 +59,7 @@ class ResetPasswordPage extends StatelessWidget {
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.orange,
+                      minimumSize: const Size(double.infinity, 50),
                       padding: const EdgeInsets.symmetric(vertical: 14),
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                     ),
@@ -68,7 +69,7 @@ class ResetPasswordPage extends StatelessWidget {
                         MaterialPageRoute(builder: (_) => const LoginPage()),
                       );
                     },
-                    child: const Text("Reset Password", style: TextStyle(color: Colors.white, fontSize: 16)),
+                    child: const Text("Reset Password", style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold)),
                   ),
                 )
               ],

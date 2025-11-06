@@ -22,7 +22,7 @@ class RegisterPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Center(child: Image.asset("assets/images/heritage.png", height: 80)),
+                Center(child: Image.asset("assets/images/heritage.png", height: 90)),
                 const SizedBox(height: 20),
 
                 const Center(
@@ -65,7 +65,7 @@ class RegisterPage extends StatelessWidget {
                 const Text(
                   "Dengan Melanjutkan, Anda Menyetujui Ketentuan Layanan Dan Kebijakan Privasi Kami.",
                   style: TextStyle(fontSize: 12),
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.justify,
                 ),
 
                 const SizedBox(height: 15),

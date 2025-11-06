@@ -31,7 +31,7 @@ class _LoginPageState extends State<LoginPage> {
 
               const Text(
                 "Masuk Dengan Email",
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 10),
 
@@ -107,6 +107,7 @@ class _LoginPageState extends State<LoginPage> {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.orange,
                     foregroundColor: Colors.white,
+                    minimumSize: const Size(double.infinity, 50),
                     padding: const EdgeInsets.symmetric(vertical: 14),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
@@ -118,7 +119,7 @@ class _LoginPageState extends State<LoginPage> {
                       MaterialPageRoute(builder: (_) => const HomePage()),
                     );
                   },
-                  child: const Text("Masuk", style: TextStyle(fontSize: 16)),
+                  child: const Text("Masuk", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                 ),
               ),
 
