@@ -6,6 +6,10 @@ class WelcomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+
+    double scale = width > 600 ? 1.6 : 1.0;
+
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -22,7 +26,7 @@ class WelcomePage extends StatelessWidget {
                 children: [
                   Positioned.fill(
                     child: Image.asset(
-                      "assets/images/homescreen.png",
+                      "assets/images/heritagehomescreen.png",
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -32,7 +36,7 @@ class WelcomePage extends StatelessWidget {
                       padding: const EdgeInsets.only(bottom: 0),
                       child: Image.asset(
                         "assets/images/heritage.png",
-                        height: 100, 
+                        height: width > 600 ? 180 : 100, 
                       ),
                     ),
                   ),
@@ -42,21 +46,21 @@ class WelcomePage extends StatelessWidget {
 
             const SizedBox(height: 12),
 
-            const Text(
+            Text(
               "Selamat Datang di\nHeritage Harmoni",
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 20 * scale,          
                 fontWeight: FontWeight.bold,
               ),
             ),
 
             const SizedBox(height: 6),
 
-            const Text(
+            Text(
               "- Melestarikan Warisan Budaya -",
               style: TextStyle(
-                fontSize: 16,
+                fontSize: 16 * scale,        
                 color: Colors.black54,
               ),
             ),
@@ -70,8 +74,10 @@ class WelcomePage extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  padding: const EdgeInsets.symmetric(vertical: 14),
-                  minimumSize: const Size(double.infinity, 60),
+                  padding: EdgeInsets.symmetric(
+                    vertical: width > 600 ? 22 : 14,
+                  ),
+                  minimumSize: Size(double.infinity, width > 600 ? 80 : 60),
                 ),
                 onPressed: () {
                   Navigator.pushReplacement(
@@ -79,10 +85,10 @@ class WelcomePage extends StatelessWidget {
                     MaterialPageRoute(builder: (_) => const LoginPage()),
                   );
                 },
-                child: const Text(
+                child: Text(
                   "Mulai",
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 18 * scale,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

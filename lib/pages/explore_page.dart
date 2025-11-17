@@ -1,10 +1,65 @@
 import 'package:flutter/material.dart';
 
-class ExplorePage extends StatelessWidget {
+class ExplorePage extends StatefulWidget {
   const ExplorePage({super.key});
 
   @override
+  State<ExplorePage> createState() => _ExplorePageState();
+}
+
+class _ExplorePageState extends State<ExplorePage> {
+  String searchQuery = "";
+
+  // ===== DATA LIST =====
+  final List<Map<String, String>> exhibitions = [
+    {
+      "title": "Pameran Tenun Nusantara",
+      "location": "Museum Budaya Jakarta",
+      "date": "12 Jan - 28 Feb 2025",
+      "image":
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Exhibition_-_Fashion_Wear_using_woven_fabric_from_NTT_by_Norci_Nomleni.jpg/250px-Exhibition_-_Fashion_Wear_using_woven_fabric_from_NTT_by_Norci_Nomleni.jpg",
+    },
+    {
+      "title": "Pameran Patung Kayu Tradisional",
+      "location": "Galeri Seni Bali",
+      "date": "5 Feb - 3 Mar 2025",
+      "image":
+          "https://upload.wikimedia.org/wikipedia/commons/b/bd/Ana_deo_figures_Louvre_70-999-5-1-2.jpg",
+    },
+  ];
+
+  final List<Map<String, String>> events = [
+    {
+      "title": "Festival Musik Tradisional",
+      "location": "Lapangan Kota Yogyakarta",
+      "date": "20 Feb 2025",
+      "image":
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Talempong_pacik2.jpg/500px-Talempong_pacik2.jpg",
+    },
+    {
+      "title": "Parade Budaya Sunda",
+      "location": "Bandung",
+      "date": "3 Mar 2025",
+      "image":
+          "https://upload.wikimedia.org/wikipedia/commons/a/a2/Tradisi_Parebut_Seeng_Bogor.jpg",
+    },
+  ];
+
+  @override
   Widget build(BuildContext context) {
+    // ==== FILTER SEARCH: berdasarkan title dan location ====
+    final filteredExhibitions = exhibitions.where((item) {
+      final q = searchQuery.toLowerCase();
+      return item["title"]!.toLowerCase().contains(q) ||
+          item["location"]!.toLowerCase().contains(q);
+    }).toList();
+
+    final filteredEvents = events.where((item) {
+      final q = searchQuery.toLowerCase();
+      return item["title"]!.toLowerCase().contains(q) ||
+          item["location"]!.toLowerCase().contains(q);
+    }).toList();
+
     return Scaffold(
       backgroundColor: const Color(0xFFF7F4E9),
       appBar: AppBar(
@@ -19,9 +74,13 @@ class ExplorePage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
               // ===== SEARCH BAR =====
               TextField(
+                onChanged: (value) {
+                  setState(() {
+                    searchQuery = value;
+                  });
+                },
                 decoration: InputDecoration(
                   hintText: "Cari acara / pameran...",
                   prefixIcon: const Icon(Icons.search),
@@ -43,20 +102,16 @@ class ExplorePage extends StatelessWidget {
               ),
               const SizedBox(height: 10),
 
-              _buildCultureCard(
-                title: "Pameran Tenun Nusantara",
-                location: "Museum Budaya Jakarta",
-                date: "12 Jan - 28 Feb 2025",
-                image:
-                    "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Exhibition_-_Fashion_Wear_using_woven_fabric_from_NTT_by_Norci_Nomleni.jpg/250px-Exhibition_-_Fashion_Wear_using_woven_fabric_from_NTT_by_Norci_Nomleni.jpg",
-              ),
-              _buildCultureCard(
-                title: "Pameran Patung Kayu Tradisional",
-                location: "Galeri Seni Bali",
-                date: "5 Feb - 3 Mar 2025",
-                image:
-                    "https://upload.wikimedia.org/wikipedia/commons/b/bd/Ana_deo_figures_Louvre_70-999-5-1-2.jpg",
-              ),
+              if (filteredExhibitions.isEmpty)
+                const Text("Tidak ada pameran ditemukan.",
+                    style: TextStyle(color: Colors.black54)),
+
+              ...filteredExhibitions.map((item) => _buildCultureCard(
+                    title: item["title"]!,
+                    location: item["location"]!,
+                    date: item["date"]!,
+                    image: item["image"]!,
+                  )),
 
               const SizedBox(height: 25),
 
@@ -67,20 +122,16 @@ class ExplorePage extends StatelessWidget {
               ),
               const SizedBox(height: 10),
 
-              _buildCultureCard(
-                title: "Festival Musik Tradisional",
-                location: "Lapangan Kota Yogyakarta",
-                date: "20 Feb 2025",
-                image:
-                    "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Talempong_pacik2.jpg/500px-Talempong_pacik2.jpg",
-              ),
-              _buildCultureCard(
-                title: "Parade Budaya Sunda",
-                location: "Bandung",
-                date: "3 Mar 2025",
-                image:
-                    "https://upload.wikimedia.org/wikipedia/commons/a/a2/Tradisi_Parebut_Seeng_Bogor.jpg",
-              ),
+              if (filteredEvents.isEmpty)
+                const Text("Tidak ada event ditemukan.",
+                    style: TextStyle(color: Colors.black54)),
+
+              ...filteredEvents.map((item) => _buildCultureCard(
+                    title: item["title"]!,
+                    location: item["location"]!,
+                    date: item["date"]!,
+                    image: item["image"]!,
+                  )),
             ],
           ),
         ),
@@ -112,9 +163,11 @@ class ExplorePage extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(14), bottomLeft: Radius.circular(14)),
+              topLeft: Radius.circular(14),
+              bottomLeft: Radius.circular(14),
+            ),
             child: Image.network(
-              image, // pakai network bukan asset
+              image,
               width: 110,
               height: 90,
               fit: BoxFit.cover,
@@ -135,9 +188,11 @@ class ExplorePage extends StatelessWidget {
                   const SizedBox(height: 4),
                   Text(location, style: const TextStyle(fontSize: 13)),
                   const SizedBox(height: 4),
-                  Text(date,
-                      style: const TextStyle(
-                          fontSize: 12, color: Colors.black54)),
+                  Text(
+                    date,
+                    style:
+                        const TextStyle(fontSize: 12, color: Colors.black54),
+                  ),
                 ],
               ),
             ),

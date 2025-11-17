@@ -1,10 +1,63 @@
 import 'package:flutter/material.dart';
 
-class EducationPage extends StatelessWidget {
+class EducationPage extends StatefulWidget {
   const EducationPage({super.key});
 
   @override
+  State<EducationPage> createState() => _EducationPageState();
+}
+
+class _EducationPageState extends State<EducationPage> {
+  String searchQuery = "";
+
+  // ===== DATA LIST =====
+  final List<Map<String, String>> materials = [
+    {
+      "title": "Sejarah Batik Nusantara",
+      "type": "Artikel & Infografis",
+      "image":
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Collectie_NMvWereldculturen%2C_RV-847-81%2C_Batikpatroon%2C_%27Parang_sawut%27%2C_voor_1891.jpg/1200px-Collectie_NMvWereldculturen%2C_RV-847-81%2C_Batikpatroon%2C_%27Parang_sawut%27%2C_voor_1891.jpg"
+    },
+    {
+      "title": "Video Pembuatan Wayang Kulit",
+      "type": "Video Pembelajaran",
+      "image":
+          "https://upload.wikimedia.org/wikipedia/commons/5/51/Gathotkaca-paraga.png"
+    },
+    {
+      "title": "E-book Tarian Tradisional",
+      "type": "E-book Budaya",
+      "image":
+          "https://upload.wikimedia.org/wikipedia/commons/8/82/Tari_topeng_cirebon.jpg"
+    },
+  ];
+
+  final List<Map<String, String>> courses = [
+    {
+      "title": "Kelas Melukis Motif Batik - Pamekasan",
+      "type": "Workshop Offline",
+      "image":
+          "https://upload.wikimedia.org/wikipedia/commons/a/ab/Kemeja_batik_tulis_lukis.jpg"
+    },
+    {
+      "title": "Kursus Musik Tradisional Online - Yogyakarta",
+      "type": "Course Online",
+      "image":
+          "https://upload.wikimedia.org/wikipedia/commons/7/7e/Traditional_indonesian_instruments04.jpg"
+    },
+  ];
+
+  @override
   Widget build(BuildContext context) {
+    // Filter data berdasarkan pencarian
+    final filteredMaterials = materials.where((item) {
+      return item["title"]!.toLowerCase().contains(searchQuery.toLowerCase());
+    }).toList();
+
+    final filteredCourses = courses.where((item) {
+      return item["title"]!.toLowerCase().contains(searchQuery.toLowerCase());
+    }).toList();
+
     return Scaffold(
       backgroundColor: const Color(0xFFF7F4E9),
       appBar: AppBar(
@@ -19,9 +72,13 @@ class EducationPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
               // ===== SEARCH BAR =====
               TextField(
+                onChanged: (value) {
+                  setState(() {
+                    searchQuery = value;
+                  });
+                },
                 decoration: InputDecoration(
                   hintText: "Cari materi / kursus...",
                   prefixIcon: const Icon(Icons.search),
@@ -43,24 +100,17 @@ class EducationPage extends StatelessWidget {
               ),
               const SizedBox(height: 12),
 
-              _buildEduCard(
-                title: "Sejarah Batik Nusantara",
-                type: "Artikel & Infografis",
-                image:
-                    "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Collectie_NMvWereldculturen%2C_RV-847-81%2C_Batikpatroon%2C_%27Parang_sawut%27%2C_voor_1891.jpg/1200px-Collectie_NMvWereldculturen%2C_RV-847-81%2C_Batikpatroon%2C_%27Parang_sawut%27%2C_voor_1891.jpg",
-              ),
-              _buildEduCard(
-                title: "Video Pembuatan Wayang Kulit",
-                type: "Video Pembelajaran",
-                image:
-                    "https://upload.wikimedia.org/wikipedia/commons/5/51/Gathotkaca-paraga.png",
-              ),
-              _buildEduCard(
-                title: "E-book Tarian Tradisional",
-                type: "E-book Budaya",
-                image:
-                    "https://upload.wikimedia.org/wikipedia/commons/8/82/Tari_topeng_cirebon.jpg",
-              ),
+              // Jika kosong
+              if (filteredMaterials.isEmpty)
+                const Text("Tidak ada materi ditemukan.",
+                    style: TextStyle(color: Colors.black54)),
+
+              // Jika ada
+              ...filteredMaterials.map((item) => _buildEduCard(
+                    title: item["title"]!,
+                    type: item["type"]!,
+                    image: item["image"]!,
+                  )),
 
               const SizedBox(height: 28),
 
@@ -71,18 +121,15 @@ class EducationPage extends StatelessWidget {
               ),
               const SizedBox(height: 12),
 
-              _buildEduCard(
-                title: "Kelas Melukis Motif Batik",
-                type: "Workshop Offline",
-                image:
-                    "https://upload.wikimedia.org/wikipedia/commons/a/ab/Kemeja_batik_tulis_lukis.jpg",
-              ),
-              _buildEduCard(
-                title: "Kursus Musik Tradisional Online",
-                type: "Course Online",
-                image:
-                    "https://upload.wikimedia.org/wikipedia/commons/7/7e/Traditional_indonesian_instruments04.jpg",
-              ),
+              if (filteredCourses.isEmpty)
+                const Text("Tidak ada kursus ditemukan.",
+                    style: TextStyle(color: Colors.black54)),
+
+              ...filteredCourses.map((item) => _buildEduCard(
+                    title: item["title"]!,
+                    type: item["type"]!,
+                    image: item["image"]!,
+                  )),
             ],
           ),
         ),

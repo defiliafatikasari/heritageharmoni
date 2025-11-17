@@ -78,7 +78,8 @@ class _BerandaPageState extends State<BerandaPage> {
   final PageController _pageController = PageController();
   Timer? _timer;
   int _currentPage = 0;
-
+  
+  String searchQuery = "";
   String selectedCategory = "Budaya";
   String selectedCity = "Semua";
 
@@ -129,7 +130,25 @@ class _BerandaPageState extends State<BerandaPage> {
 
   @override
   Widget build(BuildContext context) {
-    final newsList = newsByCategory[selectedCategory]!;
+    final newsList = newsByCategory[selectedCategory]!.where((item) {
+      final rawTitle = item['title'];
+
+      // amankan title agar selalu String
+      final title = (rawTitle is String ? rawTitle : "").toLowerCase();
+
+      // searchQuery sudah dipastikan String, jadi cukup begini:
+      final query = searchQuery.toLowerCase();
+
+      if (query.isEmpty) return true;
+      return title.contains(query);
+    }).toList();
+
+    // ================= Tinggi Banner Responsif =================
+    double bannerHeight = MediaQuery.of(context).size.width > 1000
+        ? 300   // laptop
+        : MediaQuery.of(context).size.width > 700
+            ? 200 // tablet
+            : 100; // HP
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -166,10 +185,15 @@ class _BerandaPageState extends State<BerandaPage> {
                   )
                 ],
               ),
-              const SizedBox(height: 14),
+              const SizedBox(height: 16),
 
-              // ================= Kolom Pencarian =================
+               // ================= Kolom Pencarian =================
               TextField(
+                onChanged: (value) {
+                  setState(() {
+                    searchQuery = value.toLowerCase();
+                  });
+                },
                 decoration: InputDecoration(
                   prefixIcon: const Icon(Icons.search),
                   hintText: 'Cari berita dan informasi budaya...',
@@ -182,11 +206,12 @@ class _BerandaPageState extends State<BerandaPage> {
                   ),
                 ),
               ),
+              const SizedBox(height: 16),
 
               // ================= Banner Auto Slide =================
-              SizedBox(
-                height: 180,
-                child: Stack(
+                SizedBox(
+                  height: bannerHeight,
+                  child: Stack(
                   children: [
                     PageView.builder(
                       controller: _pageController,
@@ -197,7 +222,7 @@ class _BerandaPageState extends State<BerandaPage> {
                           borderRadius: BorderRadius.circular(18),
                           child: Image.asset(
                             banner['image']!,
-                            fit: BoxFit.contain,
+                            fit: BoxFit.cover,
                             width: double.infinity,
                           ),
                         );
@@ -223,8 +248,8 @@ class _BerandaPageState extends State<BerandaPage> {
                             color: Colors.black.withOpacity(0.3),
                           ),
                           child: IconButton(
-                            padding: EdgeInsets.zero, // Hilangkan padding default
-                            iconSize: 18, // Ukuran ikon
+                            padding: EdgeInsets.zero,
+                            iconSize: 18,
                             icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
                             onPressed: () {
                               int prevPage = (_currentPage - 1 + banners.length) % banners.length;
@@ -369,11 +394,15 @@ class _BerandaPageState extends State<BerandaPage> {
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: newsList.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: MediaQuery.of(context).size.width > 1000
+                      ? 4 // laptop
+                      : MediaQuery.of(context).size.width > 700
+                          ? 3 // tablet
+                          : 2, // HP
                   mainAxisSpacing: 12,
                   crossAxisSpacing: 12,
-                  childAspectRatio: 0.9,
+                  childAspectRatio: MediaQuery.of(context).size.width > 700 ? 0.8 : 0.65,
                 ),
                 itemBuilder: (context, index) {
                   final item = newsList[index];
@@ -405,32 +434,37 @@ class _NewsCard extends StatelessWidget {
             color: Colors.grey.withOpacity(0.2),
             blurRadius: 4,
             offset: const Offset(2, 2),
-          )
+          ),
         ],
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ClipRRect(
-            borderRadius:
-                const BorderRadius.vertical(top: Radius.circular(12)),
-            child: Image.network(
-              image, // pakai network
-              height: 90,
-              width: double.infinity,
-              fit: BoxFit.cover,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              title,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF5D4037),
+          Expanded(
+            flex: 6,
+            child: ClipRRect(
+              borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
+              child: Image.network(
+                image,
+                width: double.infinity,
+                fit: BoxFit.cover,
               ),
             ),
-          )
+          ),
+          Expanded(
+            flex: 4,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                title,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF5D4037),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
